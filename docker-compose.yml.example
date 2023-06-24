@@ -1,0 +1,14 @@
+version: '3.9'
+
+volumes:
+  gitlab-runner-config:
+    name: gitlab-runner-config
+
+services:
+  gitlab-runner:
+    container_name: gitlab-runner-1
+    restart: always
+    image: gitlab/gitlab-runner:alpine3.15-v15.11.0
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - gitlab-runner-config:/etc/gitlab-runner
